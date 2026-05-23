@@ -14,7 +14,7 @@ app.get('/', (req: Request, res: Response) => {
     res.json({ message: "Typescript API for car parts works"})
 })
 
-app.use(routes);
+app.use('/api', routes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
