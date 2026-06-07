@@ -1,6 +1,14 @@
 import ProductModel from "../models/Product.js";
+import type { ProductData } from "../types/product.types.js";
 
 export async function getAllProducts(): Promise<any[]> {
     const result = await ProductModel.getAllProducts();
     return result;
+}
+
+export async function createProduct(productData: ProductData): Promise<any> {
+    const result = await ProductModel.createProduct(productData);
+    return result;
+}
+
 }
