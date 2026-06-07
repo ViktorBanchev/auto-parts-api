@@ -1,4 +1,5 @@
 import pool from "../db.js";
+import type { ProductData } from "../types/product.types.js";
 
 class ProductModel {
     static async getAllProducts(): Promise<any[]> {
@@ -19,6 +20,11 @@ class ProductModel {
         return result.rows[0];
     }
 
+    static async deleteProduct(productId: string): Promise<boolean> {
+        const query = 'DELETE FROM products WHERE id = $1';
+        const result = await pool.query(query, [productId]);
+        return (result.rowCount ?? 0) > 0;
+    }
 }
 
 export default ProductModel;

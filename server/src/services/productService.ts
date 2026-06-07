@@ -11,4 +11,7 @@ export async function createProduct(productData: ProductData): Promise<any> {
     return result;
 }
 
+export async function deleteProduct(productId: string): Promise<boolean> {
+    const result = await ProductModel.deleteProduct(productId);
+    return result;
 }
