@@ -1,0 +1,143 @@
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    /* Изваждаме височината на Navbar-а, за да е центрирано перфектно */
+    background-color: var(--hero-bg);
+    /* Използваме лекия сив фон */
+    padding: 2rem 1rem;
+}
+
+.authCard {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem 2rem;
+}
+
+.authHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.authTitle {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.authSubtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.passwordLabelRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.forgotPassword {
+    font-size: 0.875rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.forgotPassword:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    /* Лек син glow ефект */
+}
+
+.input::placeholder {
+    color: #9ca3af;
+}
+
+.submitBtn {
+    margin-top: 0.5rem;
+    width: 100%;
+    background-color: var(--primary-color);
+    /* Син бутон */
+    color: white;
+    border: none;
+    padding: 0.875rem;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submitBtn:hover {
+    background-color: var(--primary-hover);
+}
+
+.submitBtn:active {
+    transform: scale(0.98);
+    /* Леко свиване при клик */
+}
+
+.authFooter {
+    margin-top: 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
+.footerText {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.footerLink {
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
