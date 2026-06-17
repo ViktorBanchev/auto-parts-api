@@ -3,9 +3,7 @@
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 80px);
-    /* Изваждаме височината на Navbar-а, за да е центрирано перфектно */
     background-color: var(--hero-bg);
-    /* Използваме лекия сив фон */
     padding: 2rem 1rem;
 }
 
@@ -88,7 +86,6 @@
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    /* Лек син glow ефект */
 }
 
 .input::placeholder {
@@ -99,7 +96,6 @@
     margin-top: 0.5rem;
     width: 100%;
     background-color: var(--primary-color);
-    /* Син бутон */
     color: white;
     border: none;
     padding: 0.875rem;
@@ -116,7 +112,6 @@
 
 .submitBtn:active {
     transform: scale(0.98);
-    /* Леко свиване при клик */
 }
 
 .authFooter {
