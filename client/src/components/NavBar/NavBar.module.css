@@ -44,7 +44,6 @@
 
 .cartButton {
     background-color: var(--primary-color);
-    /* Синьо */
     color: white;
     padding: 0.5rem 1.25rem;
     border-radius: 6px;
@@ -55,4 +54,14 @@
 
 .cartButton:hover {
     background-color: var(--primary-hover);
+}
+
+.greeting {
+    color: #e2e8f0;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    cursor: default;
 }
