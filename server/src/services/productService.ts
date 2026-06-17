@@ -11,7 +11,12 @@ export async function createProduct(productData: ProductData): Promise<any> {
     return result;
 }
 
-export async function deleteProduct(productId: string): Promise<boolean> {
-    const result = await ProductModel.deleteProduct(productId);
+export async function deleteProduct(slug: string): Promise<boolean> {
+    const result = await ProductModel.deleteProduct(slug);
+    return result;
+}
+
+export async function getProductBySlug(slug: string): Promise<any> {
+    const result = await ProductModel.gerProductBySlug(slug);
     return result;
 }

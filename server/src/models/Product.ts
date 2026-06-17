@@ -20,10 +20,16 @@ class ProductModel {
         return result.rows[0];
     }
 
-    static async deleteProduct(productId: string): Promise<boolean> {
-        const query = 'DELETE FROM products WHERE id = $1';
-        const result = await pool.query(query, [productId]);
+    static async deleteProduct(slug: string): Promise<boolean> {
+        const query = 'DELETE FROM products WHERE slug = $1';
+        const result = await pool.query(query, [slug]);
         return (result.rowCount ?? 0) > 0;
+    }
+
+    static async gerProductBySlug(slug: string): Promise<any> {
+        const query = 'SELECT * FROM products WHERE slug = $1';
+        const result = await pool.query(query, [slug]);
+        return result.rows[0];
     }
 }
 

@@ -1,5 +1,5 @@
 import { Router, type Request, type Response } from "express";
-import { createProduct, deleteProduct, getAllProducts } from "../services/productService.js";
+import { createProduct, deleteProduct, getAllProducts, getProductBySlug } from "../services/productService.js";
 
 const productController = Router();
 
@@ -23,10 +23,10 @@ productController.post('/', async (req: Request, res: Response) => {
     }
 });
 
-productController.delete('/:productId', async (req: Request, res: Response) => {
+productController.delete('/:slug', async (req: Request, res: Response) => {
     try {
-        const productId = req.params.productId as string;
-        const isDeleted = await deleteProduct(productId);
+        const slug = req.params.slug as string;
+        const isDeleted = await deleteProduct(slug);
 
         if (!isDeleted) {
             return res.status(404).json({ message: "Product not found" });
@@ -37,6 +37,16 @@ productController.delete('/:productId', async (req: Request, res: Response) => {
         console.error("Error deleting product:", error);
         res.status(500).json({ message: "Server error during delete" });
     }
-})
+});
+
+productController.get('/:slug', async (req: Request, res: Response) => {
+    try {
+        const slug = req.params.slug as string;
+        const product = await getProductBySlug(slug);
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({ message: "Server error" })
+    }
+});
 
 export default productController;
