@@ -4,11 +4,13 @@ import { useAuthStore } from "../../store/authStore";
 import { useMutation } from "@tanstack/react-query";
 import { logoutUser } from "../../services/authService";
 import { useCartStore } from "../../store/cartStore";
+import type React from "react";
+import { useState } from "react";
 
 export default function NavBar() {
     const navigate = useNavigate();
     const { isAuthenticated, user, logout} = useAuthStore();
-
+    const [searchTerm, setSearchTerm] = useState('');
     const cartItems = useCartStore((state) => state.items);
 
     const totalItemsCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -28,11 +30,35 @@ export default function NavBar() {
         logoutMutation.mutate();
     }
 
+    const handleSearch = (e: React.SubmitEvent) => {
+        e.preventDefault();
+
+        const trimmedSearch = searchTerm.trim();
+
+        if (trimmedSearch) {
+            navigate(`/products?search=${encodeURIComponent(trimmedSearch)}`);
+            setSearchTerm('');
+        } else {
+            navigate('/products')
+        }
+    }
+
     return (
         <nav className={styles.navbar}>
             <div className={styles.logoContainer}>
                 <a href="/" className={styles.logo}>AutoParts</a>
             </div>
+
+            <form className={styles.searchForm} onSubmit={handleSearch}>
+                <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className={styles.searchField}
+                    placeholder="Search parts..."
+                />
+                <button className={styles.searchBtn}>Search</button>
+            </form>
 
             <ul className={styles.navLinks}>
                 <li><Link to="/" className={styles.link}>Home</Link></li>
