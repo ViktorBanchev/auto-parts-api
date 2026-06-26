@@ -1,11 +1,18 @@
 import { Router, type Request, type Response } from "express";
-import { createProduct, deleteProduct, getAllProducts, getProductBySlug } from "../services/productService.js";
+import { createProduct, deleteProduct, getProductBySlug, getProducts } from "../services/productService.js";
 
 const productController = Router();
 
 productController.get('/', async (req: Request, res: Response) => {
     try {
-        const products = await getAllProducts();
+        const { category, search, page, limit } = req.query;
+        const products = await getProducts(
+            category as string,
+            search as string,
+            page as string,
+            limit as string
+        );
+
         res.status(200).json(products)
     }
     catch (err) {
@@ -43,7 +50,9 @@ productController.get('/:slug', async (req: Request, res: Response) => {
     try {
         const slug = req.params.slug as string;
         const product = await getProductBySlug(slug);
-        res.status(200).json(product);
+        res.status(200).json({
+            data: product
+        });
     } catch (error) {
         res.status(500).json({ message: "Server error" })
     }
