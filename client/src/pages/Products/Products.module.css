@@ -1,50 +1,191 @@
 .catalogContainer {
-    padding: 40px 20px;
+    padding: 3rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    font-family: system-ui, -apple-system, sans-serif;
 }
 
 .catalogTitle {
     font-size: 2rem;
     font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 8px;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
 }
 
 .catalogSubtitle {
-    color: #64748b;
+    color: var(--text-muted);
     font-size: 1rem;
-    margin-bottom: 32px;
+    margin-bottom: 2.5rem;
 }
 
 .productGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
 }
 
 .noProducts {
     text-align: center;
-    padding: 60px 20px;
-    background-color: #f8fafc;
-    border-radius: 12px;
-    border: 1px dashed #cbd5e1;
-    color: #64748b;
+    padding: 4rem 2rem;
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px dashed var(--border-color);
+    color: var(--text-muted);
     grid-column: 1 / -1;
 }
 
 @media (max-width: 480px) {
     .catalogContainer {
-        padding: 20px 12px;
+        padding: 1.5rem 1rem;
     }
-
     .catalogTitle {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
-
     .productGrid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 1rem;
     }
+}
+
+/* Overlay фонът, който затъмнява страницата */
+.overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(2px);
+    z-index: 40;
+}
+
+/* Самият панел, който излиза отстрани */
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Скрито състояние */
+    width: 100%;
+    max-width: 350px;
+    height: 100vh;
+    background-color: var(--card-bg);
+    box-shadow: -4px 0 25px rgba(0, 0, 0, 0.05);
+    z-index: 50;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.drawerOpen {
+    right: 0;
+}
+
+.drawerHeader {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drawerHeader h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.drawerHeader button {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color var(--transition);
+}
+
+.drawerHeader button:hover {
+    color: var(--text-color);
+}
+
+.drawerContent {
+    padding: 1.5rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.drawerContent label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Стилизиране на самите отметки (checkboxes) */
+.drawerContent input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    accent-color: var(--text-color); /* Прави отметката черна/тъмна при чекване */
+}
+
+.filterFooter {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+}
+
+.clearBtn {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.clearBtn:hover:not(:disabled) {
+    background-color: var(--border-color);
+}
+
+.clearBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Контейнерът, който държи заглавието и бутона на един ред */
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filterBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.filterBtn:hover {
+    background-color: var(--bg-color);
+    border-color: #cbd5e1;
 }

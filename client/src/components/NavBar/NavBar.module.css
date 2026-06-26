@@ -3,9 +3,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: var(--dark-bg);
-    color: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logoContainer {
@@ -14,54 +16,94 @@
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #ffffff;
-    text-decoration: none;
-    letter-spacing: 1px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
 }
 
 .navLinks {
     display: flex;
     gap: 2rem;
     list-style: none;
-    margin: 0;
-    padding: 0;
     align-items: center;
 }
 
 .link {
-    color: #d1d5db;
-    text-decoration: none;
-    font-size: 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
     font-weight: 500;
-    transition: color 0.2s ease-in-out;
+    transition: color var(--transition);
 }
 
 .link:hover {
-    color: #ffffff;
+    color: var(--text-color);
 }
 
 .cartButton {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--text-color);
+    color: var(--card-bg);
     padding: 0.5rem 1.25rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.2s ease-in-out;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background-color var(--transition), transform var(--transition);
 }
 
 .cartButton:hover {
-    background-color: var(--primary-hover);
+    background-color: var(--text-muted);
 }
 
 .greeting {
-    color: #e2e8f0;
+    color: var(--text-muted);
     font-weight: 500;
-    font-size: 1rem;
-    margin-right: 10px;
+    font-size: 0.95rem;
+    margin-right: 1rem;
+    cursor: default;
+}
+
+.searchForm {
     display: flex;
     align-items: center;
-    cursor: default;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 0.25rem 0.25rem 0.25rem 1rem;
+    transition: all var(--transition);
+}
+
+.searchForm:focus-within {
+    background-color: var(--card-bg);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.searchField {
+    border: none;
+    background: transparent;
+    outline: none;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-family: var(--font-main);
+    width: 250px;
+}
+
+.searchField::placeholder {
+    color: #94a3b8;
+}
+
+.searchBtn {
+    background-color: var(--text-color);
+    color: var(--card-bg);
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: opacity var(--transition);
+}
+
+.searchBtn:hover {
+    opacity: 0.85;
 }

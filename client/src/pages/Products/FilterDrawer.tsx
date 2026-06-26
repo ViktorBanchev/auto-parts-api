@@ -49,11 +49,11 @@ export default function FilterDrawer({
                     ))}
                 </div>
 
-                <div className="p-6 border-t border-gray-100 bg-gray-50">
+                <div className={styles.filterFooter}>
                     <button
                         onClick={onClearFilters}
                         disabled={selectedCategories.length === 0}
-                        className="w-full py-3 bg-white border border-gray-300 text-slate-700 font-medium rounded-lg hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                        className={styles.clearBtn}
                     >
                         Clear filters
                     </button>
