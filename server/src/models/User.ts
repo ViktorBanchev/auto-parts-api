@@ -1,3 +1,4 @@
+import { features } from 'node:process';
 import pool from '../db.js';
 import type { UserData } from '../types/user.types.js';
 
@@ -10,8 +11,6 @@ class UserModel {
             created_at AS "createdAt"
         FROM users WHERE email = $1`;
         const result = await pool.query(query, [email]);
-        console.log(result);
-        console.log(result.rows);
         return result.rows[0];
     };
 
