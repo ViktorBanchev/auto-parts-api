@@ -7,6 +7,7 @@ import Cart from './pages/Cart/Cart'
 import ProtectedRoute from './components/ProtectedRoute'
 import ProductsPage from './pages/Products/Products'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
+import Footer from './components/Footer/Footer'
 
 function App() {
 	return (
@@ -25,6 +26,8 @@ function App() {
 					<Route path='/checkout' element={(<h2>Checkout page</h2>)} />
 				</Route>
 			</Routes>
+
+			<Footer />
 		</>
 	)
 }
