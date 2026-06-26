@@ -6,13 +6,11 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 export default function Home() {
     const { data: products = [], isLoading } = useQuery({
         queryKey: ['products'],
-        queryFn: getProducts
+        queryFn: () => getProducts(null, null, 1, 3)
     });
-
+    
     if (isLoading) return <div>Loading featured parts...</div>;
     // if (error) return <div>Error loading products.</div>;
-
-    const featuredProducts = products?.slice(0, 4) || [];
 
     return (
         <main className={styles.homeContainer}>
@@ -25,7 +23,7 @@ export default function Home() {
                 <h2 className={styles.sectionTitle}>Featured Products</h2>
 
                 <div className={styles.productsGrid}>
-                    {featuredProducts.map((product) => (
+                    {products.map((product) => (
                         <ProductCard key={product.id} {...product} />
                     ))}
                 </div>
