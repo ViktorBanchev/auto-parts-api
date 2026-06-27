@@ -11,13 +11,6 @@ export interface Product {
     brand_id: string;
 }
 
-interface Filters {
-    categoryParam: string | undefined;
-    searchQuery: string | undefined;
-    page: number;
-    limit: number;
-}
-
 export const getProducts = async (
     categoryParam: string | null,
     searchQuery: string | null,
